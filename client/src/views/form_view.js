@@ -20,7 +20,7 @@ FormView.prototype.handleSubmit = function (event) {
 FormView.prototype.createGoal = function (form) {
   const newGoal = {
     goal: form.goal.value,
-    deadline: form.goal.deadline
+    deadline: form.deadline.value
   };
   return newGoal;
 };
