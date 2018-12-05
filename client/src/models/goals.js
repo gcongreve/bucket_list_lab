@@ -5,3 +5,5 @@ const Goals = function () {
   this.url = 'http://localhost:3000/api/goals';
   this.request = new RequestHelper(this.url);
 };
+
+module.exports = Goals;
