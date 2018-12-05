@@ -11,13 +11,11 @@ Goals.prototype.bindEvents = function () {
     const newGoal = payload.detail;
     this.postGoal(newGoal);
   });
-
   PubSub.subscribe('Display:delete-button-clicked', (payload) => {
     const deletedGoalId = payload.detail;
     this.deleteGoal(deletedGoalId);
   });
 };
-
 
 
 Goals.prototype.getData = function () {
