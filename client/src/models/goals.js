@@ -6,4 +6,18 @@ const Goals = function () {
   this.request = new RequestHelper(this.url);
 };
 
+Goals.prototype.bindEvents = function () {
+  PubSub.subscribe('FormView:goal-submitted', (payload) => {
+    const newGoal = payload.detail;
+    this.postGoal(newGoal);
+  })
+};
+
+Goals.prototype.postGoal = function (goal) {
+  this.request.post(goal)
+  .then((goals) => {
+    PubSub.publish('Goals:data-ready', goals);
+  });
+};
+
 module.exports = Goals;
