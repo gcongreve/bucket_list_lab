@@ -1,4 +1,5 @@
 const PubSub = require('../helpers/pub_sub.js');
+const Display = require('./display.js')
 
 const DisplayView = function (location) {
   this.location = location;
@@ -11,15 +12,9 @@ DisplayView.prototype.bindEvents = function () {
 };
 
 DisplayView.prototype.render = function (array) {
-  array.forEach((objective) => {
-    const div = document.createElement('div');
-    const goal = document.createElement('p');
-    goal.textContent = objective.goal;
-    div.appendChild(goal)
-    this.location.appendChild(div)
-  })
-
-
+  this.location.innerHTML = '';
+  const display = new Display(this.location);
+  array.forEach((goal) => display.render(goal));
 };
 
 
