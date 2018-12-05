@@ -2,18 +2,17 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const parser = require('body-parser');
-// create_router needs writing
-// const MongoClient = require.('./helpers/create_router.js');
+const MongoClient = require('mongodb').MongoClient;
+const createRouter = require('./helpers/create_router.js');
 const publicPath = path.join(__dirname, '../client/public');
 app.use(express.static(publicPath));
 
 app.use(parser.json());
 
-MongoClient.connect('mongodb://localhost:21017')
+MongoClient.connect('mongodb://localhost:27017', { useNewUrlParser: true })
   .then((client) => {
     const db = client.db('bucket_list');
     const goalsCollection = db.collection('goals');
-    // goals Router not written yet
     const goalsRouter = createRouter(goalsCollection);
     app.use('/api/goals', goalsRouter);
   })
