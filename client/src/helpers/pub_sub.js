@@ -9,8 +9,8 @@ const PubSub = {
 
   subscribe: function (channel, callback) {
     document.addEventListener(channel, callback);
+    console.log(`pubsub is subscribing on ${channel}`);
   }
-  console.log(`pubsub is subscribing on ${channel}`);
 
 };
 
