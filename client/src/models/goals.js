@@ -13,6 +13,14 @@ Goals.prototype.bindEvents = function () {
   })
 };
 
+Goals.prototype.getData = function () {
+  this.request.get()
+  .then((goals) => {
+    PubSub.publish('Goals:data-ready', goals);
+  });
+};
+
+
 Goals.prototype.postGoal = function (goal) {
   this.request.post(goal)
   .then((goals) => {

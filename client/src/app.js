@@ -15,5 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const goals = new Goals();
   goals.bindEvents();
+  goals.getData();
 
 });
