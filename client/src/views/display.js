@@ -9,10 +9,10 @@ Display.prototype.render = function (objective) {
   const div = document.createElement('div');
   div.id = "goal";
   const goal = document.createElement('h4');
-  goal.textContent = objective.goal;
+  goal.textContent = `Goal: ${objective.goal}`;
   div.appendChild(goal)
   const deadline = document.createElement('p');
-  deadline.textContent = objective.deadline;
+  deadline.textContent = `Deadline: ${objective.deadline}`;
   div.appendChild(deadline);
 
   const deleteButton = this.addDeletebutton(objective._id);
@@ -26,6 +26,7 @@ Display.prototype.render = function (objective) {
 Display.prototype.addDeletebutton = function (objectiveId) {
   const button = document.createElement('button');
   button.classList.add('delete-button');
+  button.textContent = "Delete"
   button.value = objectiveId;
 
   button.addEventListener('click', (event) => {
